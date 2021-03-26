@@ -4,12 +4,13 @@ FROM wordpress
 # Configuration
 RUN apt update
 RUN apt upgrade -y
-RUN apt install mysql
+RUN apt install mariadb-server -y
 ADD https://raw.githubusercontent.com/debalti/debalti-backend-create/live/wordpress-conf/wpinstall.sh /wpinstall.sh
 RUN /wpinstall.sh
 
 # Cleanup
 RUN rm /wpinstall.sh
 
-# Expose
+# Expose and Start Services
+RUN service apache2 restart
 EXPOSE 80 443
