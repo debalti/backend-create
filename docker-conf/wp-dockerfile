@@ -5,7 +5,7 @@ FROM wordpress
 RUN echo 'root:asdf' | chpasswd
 RUN apt update
 RUN apt upgrade -y
-RUN apt install mariadb-server -y
+RUN apt install mariadb-client -y
 ADD https://raw.githubusercontent.com/debalti/backend-create/live/wordpress-conf/wpinstall.sh /wpinstall.sh
 RUN chmod 700 /wpinstall.sh && /wpinstall.sh
 
