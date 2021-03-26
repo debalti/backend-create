@@ -2,8 +2,8 @@
 MYSQL='/usr/bin/mysql'
 mysqlhost="localhost"
 mysqldb="wpdb"
-mysqluser="dbuser"
-mysqlpass="bbwsucks"
+mysqluser="root"
+mysqlpass="asdf"
 wptitle="Drugstore"
 wpuser="pharmacist"
 wppass="ketamine"
