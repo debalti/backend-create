@@ -1,0 +1,3 @@
+CREATE DATABASE IF NOT EXISTS wpdb; 
+GRANT ALL ON wpdb.* TO 'wpuser'@'localhost' IDENTIFIED BY 'asdf'; 
+FLUSH PRIVILEGES;
