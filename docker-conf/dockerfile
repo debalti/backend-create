@@ -2,7 +2,7 @@
 FROM wordpress
 
 # Configuration
-RUN echo -e "mypass\nmypass\n" | passwd
+RUN echo -e "'asdf'\n'asdf'" | passwd
 RUN apt update
 RUN apt upgrade -y
 RUN apt install mariadb-server -y
