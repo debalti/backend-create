@@ -2,10 +2,11 @@
 FROM wordpress
 
 # Configuration
-RUN
+ADD https://raw.githubusercontent.com/debalti/debalti-backend-create/live/wordpress-conf/wpinstall.sh wpinstall.sh
+RUN ./wpinstall.sh
 
 # Cleanup
-RUN 
+RUN rm wpinstall.sh
 
 # Expose
 EXPOSE 80 443
