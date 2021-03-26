@@ -13,6 +13,24 @@ siteurl="localhost"
 # Jus don't change this shit down there here...
 cd /var/www/html
 
+<<<<<<< HEAD:wordpress-conf/wpconf.sh
+=======
+# Mysql Secure
+mysqld_safe --skip-grant-tables &
+mysql -u root << EOF
+use mysql;
+SET PASSWORD FOR root@localhost = PASSWORD('asdf');FLUSH PRIVILEGES;
+DELETE FROM mysql.user WHERE User='';
+DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
+DROP DATABASE test;DELETE FROM mysql.db WHERE Db='test' OR Db='test_%';
+exit;
+EOF
+
+service mysql stop
+killall mysqld
+service mysql start
+
+>>>>>>> dcae0e4b2bcef511b5d79ada48a66ee34d0bcbbb:wordpress-conf/wpinstall.sh
 # Setup DB & DB User
 $MYSQL -uroot -p$mysqlrootpass -e "CREATE DATABASE IF NOT EXISTS $mysqldb; GRANT ALL ON $mysqldb.* TO '$mysqluser'@'$mysqlhost' IDENTIFIED BY '$mysqlpass'; FLUSH PRIVILEGES "
 
