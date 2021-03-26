@@ -2,6 +2,9 @@
 FROM wordpress
 
 # Configuration
+RUN apt update
+RUN apt upgrade -y
+RUN apt install mysql
 ADD https://raw.githubusercontent.com/debalti/debalti-backend-create/live/wordpress-conf/wpinstall.sh /wpinstall.sh
 RUN /wpinstall.sh
 
