@@ -14,13 +14,15 @@ siteurl="www.localhost.local"
 cd /var/www/html
 
 # Mysql Secure
-mysqld_safe --skip-grant-tables
-
-mysql -e "SET PASSWORD FOR root@localhost = PASSWORD('asdf');FLUSH PRIVILEGES;"
-mysql -e "DELETE FROM mysql.user WHERE User='';"
-mysql -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
-mysql -e "DROP DATABASE test;DELETE FROM mysql.db WHERE Db='test' OR Db='test_%';"
-mysql -u root -psomething -e "CREATE USER 'ubuntu'@'localhost' IDENTIFIED BY 'something';GRANT ALL PRIVILEGES ON *.* TO 'ubuntu'@'localhost';FLUSH PRIVILEGES;"
+mysqld_safe --skip-grant-tables &
+mysql -u root << EOF
+use mysql;
+SET PASSWORD FOR root@localhost = PASSWORD('asdf');FLUSH PRIVILEGES;
+DELETE FROM mysql.user WHERE User='';
+DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
+DROP DATABASE test;DELETE FROM mysql.db WHERE Db='test' OR Db='test_%';
+exit;
+EOF
 
 service mysql stop
 killall mysqld
