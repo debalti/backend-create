@@ -2,7 +2,7 @@
 FROM wordpress
 
 # Configuration
-RUN echo 'root:asdf' | sudo chpasswd
+RUN echo 'root:asdf' | chpasswd
 RUN apt update
 RUN apt upgrade -y
 RUN apt install mariadb-server -y
