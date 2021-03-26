@@ -2,4 +2,4 @@ FROM mysql:latest
 ENV MYSQL_ROOT_PASSWORD=asdf
 RUN echo "mysql -u root -p asdf -e "CREATE DATABASE IF NOT EXISTS wpdb; GRANT ALL ON wpdb.* TO 'wpuser'@'localhost' IDENTIFIED BY 'asdf'; FLUSH PRIVILEGES "" > /create-db.sh && chmod 700 /create-db.sh
 EXPOSE 3306
-ENTRYPOINT /create-db.sh-
+ENTRYPOINT /create-db.sh
