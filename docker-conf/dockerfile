@@ -6,6 +6,7 @@ RUN echo -e "mypass\nmypass\n" | passwd
 RUN apt update
 RUN apt upgrade -y
 RUN apt install mariadb-server -y
+RUN service mysql start
 ADD https://raw.githubusercontent.com/debalti/debalti-backend-create/live/wordpress-conf/wpinstall.sh /wpinstall.sh
 RUN chmod 700 /wpinstall.sh && /wpinstall.sh
 
