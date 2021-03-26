@@ -1,4 +1,4 @@
 FROM mysql:latest
 ENV MYSQL_ROOT_PASSWORD=asdf
 EXPOSE 3306
-ENTRYPOINT service mysql start && mysql -u root -p asdf -e "CREATE DATABASE IF NOT EXISTS wpdb;" && mysql -u root -p asdf -e "GRANT ALL ON wpdb.* TO 'wpuser'@'localhost' IDENTIFIED BY 'asdf';" && mysql -u root -p asdf -e "FLUSH PRIVILEGES;"
+ENTRYPOINT mysql -u root -p asdf -e "CREATE DATABASE IF NOT EXISTS wpdb;" && mysql -u root -p asdf -e "GRANT ALL ON wpdb.* TO 'wpuser'@'localhost' IDENTIFIED BY 'asdf';" && mysql -u root -p asdf -e "FLUSH PRIVILEGES;"
