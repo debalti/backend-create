@@ -1,0 +1,11 @@
+# Init
+FROM wordpress
+
+# Configuration
+RUN
+
+# Cleanup
+RUN 
+
+# Expose
+EXPOSE 80 443
