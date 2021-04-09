@@ -1,9 +1,9 @@
 # u may change this
 MYSQL='/usr/bin/mysql'
-mysqlhost="localhost"
+mysqlhost="172.17.0.2"
 mysqldb="wpdb"
-mysqluser="root"
-mysqlpass="asdf"
+mysqluser="wpuser"
+mysqlpass="securePW"
 wptitle="Drugstore"
 wpuser="pharmacist"
 wppass="ketamine"
