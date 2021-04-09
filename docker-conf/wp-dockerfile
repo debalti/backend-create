@@ -8,11 +8,8 @@ RUN apt upgrade -y
 RUN apt install mariadb-client -y
 RUN apt install ed -y
 ADD https://raw.githubusercontent.com/debalti/backend-create/live/wordpress-conf/wpinstall.sh /wpinstall.sh
-RUN chmod 700 /wpinstall.sh && /wpinstall.sh
-
-# Cleanup
-RUN rm /wpinstall.sh
+RUN chmod 700 /wpinstall.sh
 
 # Expose and Start Services
-RUN service apache2 restart
 EXPOSE 80 443
+ENTRYPOINT [/wpinstall.sh]
