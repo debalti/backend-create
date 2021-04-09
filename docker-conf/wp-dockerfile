@@ -12,4 +12,4 @@ RUN chmod 700 /wpinstall.sh
 
 # Expose and Start Services
 EXPOSE 80 443
-ENTRYPOINT [/wpinstall.sh]
+ENTRYPOINT /wpinstall.sh
