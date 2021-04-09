@@ -1,3 +1,6 @@
+# Wait
+sleep 10
+
 # u may change this
 MYSQL='/usr/bin/mysql'
 mysqlhost="172.17.0.2"
@@ -14,7 +17,7 @@ siteurl="localhost"
 cd /var/www/html
 
 # Build our wp-config.php file
-sed -e "s/localhost/"$mysqlhost"/" -e "s/database_name_here/"$mysqldb"/" -e "s/username_here/"$mysqluser"/" -e "s/password_here/"$mysqlpass"/" wp-config-sample.php > wp-config-docker.php
+sed -e "s/localhost/"$mysqlhost"/" -e "s/database_name_here/"$mysqldb"/" -e "s/username_here/"$mysqluser"/" -e "s/password_here/"$mysqlpass"/" /var/www/html/wp-config-sample.php >> /var/www/html/wp-config-docker.php
 
 # Grab our Salt Keys
 SALT=$(curl -L https://api.wordpress.org/secret-key/1.1/salt/)
@@ -25,4 +28,4 @@ printf '%s\n' "g/$STRING/d" a "$SALT" . w | ed -s wp-config.php
 curl -d "weblog_title=$wptitle&user_name=$wpuser&admin_password=$wppass&admin_password2=$wppass&admin_email=$wpemail" http://$siteurl/wp-admin/install.php?step=2
 
 # Tidy up
-rm wp-config-sample.php
+#rm wp-config-sample.php
